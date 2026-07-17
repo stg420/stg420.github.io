@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stg420 Hub</title>
+    <title>Josh Entertainment Hub</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,18 +23,30 @@
             padding: 20px;
             border-radius: 12px;
             display: inline-block;
-            width: 250px;
+            width: 300px;
+            height: 400px;
             margin: 15px;
             border: 1px solid #334155;
             transition: transform 0.2s;
+            vertical-align: top;
+            text-align: center;
         }
         .game-card:hover {
             transform: scale(1.05);
             border-color: #38bdf8;
         }
-        h2 {
-            font-size: 1.2rem;
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
             margin-bottom: 15px;
+            background-color: #334155; /* Placeholder color if image fails */
+        }
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #f8fafc;
         }
         .play-btn {
             background-color: #38bdf8;
@@ -44,6 +56,7 @@
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
+            margin-top: 10px;
         }
         .play-btn:hover {
             background-color: #7dd3fc;
@@ -52,21 +65,21 @@
 </head>
 <body>
 
-<h1>Josh Games Hub</h1>
+    <h1>Josh Entertainment Hub</h1>
 
-    <!-- Game 1 Card -->
+    <!-- Kindergarten 3 Card -->
     <div class="game-card">
+        <img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3">
         <h2>Kindergarten 3</h2>
         <a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play Kindergarten 3</a>
     </div>
 
-    <!-- Game 2 Card -->
+    <!-- Bendy Card -->
     <div class="game-card">
+        <img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine">
         <h2>Bendy And The Ink Machine</h2>
         <a href="https://stg420.github.io/batim/" class="play-btn">Play Bendy</a>
     </div>
-
-
 
 </body>
 </html>

@@ -18,14 +18,21 @@
             font-size: 2.5rem;
             margin-bottom: 40px;
         }
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         .game-card {
             background-color: #1e293b;
-            padding: 16px; /* Reduced by 20% */
-            border-radius: 10px; /* Reduced by 20% */
+            padding: 16px;
+            border-radius: 10px;
             display: inline-block;
-            width: 240px; /* Reduced from 300px by 20% */
-            height: 320px; /* Reduced from 400px by 20% */
-            margin: 12px; /* Reduced by 20% */
+            width: 240px;
+            height: 320px;
+            margin: 12px;
             border: 1px solid #334155;
             transition: transform 0.2s;
             vertical-align: top;
@@ -37,26 +44,26 @@
         }
         .game-card img {
             width: 100%;
-            height: 160px; /* Reduced from 200px by 20% */
+            height: 160px;
             object-fit: cover;
-            border-radius: 6px; /* Reduced by 20% */
-            margin-bottom: 12px; /* Reduced by 20% */
+            border-radius: 6px;
+            margin-bottom: 12px;
             background-color: #334155;
         }
         h2 {
-            font-size: 1.1rem; /* Reduced by 20% */
-            margin-bottom: 12px; /* Reduced by 20% */
+            font-size: 1.1rem;
+            margin-bottom: 12px;
             color: #f8fafc;
         }
         .play-btn {
             background-color: #38bdf8;
             color: #0f172a;
-            padding: 8px 16px; /* Reduced by 20% */
-            border-radius: 5px; /* Reduced by 20% */
+            padding: 8px 16px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            margin-top: 8px; /* Reduced by 20% */
+            margin-top: 8px;
         }
         .play-btn:hover {
             background-color: #7dd3fc;
@@ -67,46 +74,62 @@
 
     <h1>Josh Entertainment Hub</h1>
 
-    <!-- Kindergarten 3 Card -->
-    <div class="game-card">
-        <img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3">
-        <h2>Kindergarten 3</h2>
-        <a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a>
-    </div>
+    <div class="game-grid">
+        <!-- Kindergarten 1 -->
+        <div class="game-card">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1">
+            <h2>Kindergarten 1</h2>
+            <a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a>
+        </div>
 
-    <!-- Bendy Card -->
-    <div class="game-card">
-        <img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine">
-        <h2>Bendy And The Ink Machine</h2>
-        <a href="https://stg420.github.io/batim/" class="play-btn">Play</a>
-    </div>
+        <!-- Kindergarten 2 -->
+        <div class="game-card">
+            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2">
+            <h2>Kindergarten 2</h2>
+            <a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a>
+        </div>
 
-    <!-- Baldi's Basics Plus Card -->
-    <div class="game-card">
-        <img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus">
-        <h2>Baldi's Basics Plus</h2>
-        <a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a>
-    </div>
+        <!-- Kindergarten 3 -->
+        <div class="game-card">
+            <img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3">
+            <h2>Kindergarten 3</h2>
+            <a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a>
+        </div>
 
-    <!-- TABS Card -->
-    <div class="game-card">
-        <img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator">
-        <h2>TABS</h2>
-        <a href="https://stg420.github.io/tabs/" class="play-btn">Play</a>
-    </div>
+        <!-- Bendy Card -->
+        <div class="game-card">
+            <img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine">
+            <h2>Bendy And The Ink Machine</h2>
+            <a href="https://stg420.github.io/batim/" class="play-btn">Play</a>
+        </div>
 
-    <!-- GTA III Card -->
-    <div class="game-card">
-        <img src="https://www.igrandtheftauto.com/content/images/3253-gtaiii-10th-anniversary-european-cover-art.jpg" alt="Grand Theft Auto 3">
-        <h2>Grand Theft Auto 3</h2>
-        <a href="https://stg420.github.io/gta3/" class="play-btn">Play</a>
-    </div>
+        <!-- Baldi's Basics Plus Card -->
+        <div class="game-card">
+            <img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus">
+            <h2>Baldi's Basics Plus</h2>
+            <a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a>
+        </div>
 
-    <!-- Schoolboy Runaway Card -->
-    <div class="game-card">
-        <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co98mu.webp" alt="Schoolboy Runaway">
-        <h2>Schoolboy Runaway</h2>
-        <a href="https://stg420.github.io/schoolboy/" class="play-btn">Play</a>
+        <!-- TABS Card -->
+        <div class="game-card">
+            <img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator">
+            <h2>TABS</h2>
+            <a href="https://stg420.github.io/tabs/" class="play-btn">Play</a>
+        </div>
+
+        <!-- GTA III Card -->
+        <div class="game-card">
+            <img src="https://www.igrandtheftauto.com/content/images/3253-gtaiii-10th-anniversary-european-cover-art.jpg" alt="Grand Theft Auto 3">
+            <h2>Grand Theft Auto 3</h2>
+            <a href="https://stg420.github.io/gta3/" class="play-btn">Play</a>
+        </div>
+
+        <!-- Schoolboy Runaway Card -->
+        <div class="game-card">
+            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co98mu.webp" alt="Schoolboy Runaway">
+            <h2>Schoolboy Runaway</h2>
+            <a href="https://stg420.github.io/schoolboy/" class="play-btn">Play</a>
+        </div>
     </div>
 
 </body>

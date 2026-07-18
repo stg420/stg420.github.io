@@ -72,6 +72,7 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Current Update:</strong> Added cache-busting logic to counter for guaranteed updates.</li>
                 <li><strong>Current Update:</strong> Replaced hit tracker with CounterAPI for native text counting.</li>
                 <li><strong>Current Update:</strong> Increased font sizes for better UI scaling.</li>
                 <li><strong>Current Update:</strong> Added universal site view counter to the header.</li>
@@ -93,14 +94,15 @@
     </div>
 
     <script>
-        fetch("https://api.counterapi.dev/v1/stg420githubio/hubvisits/up")
+        // Fetch with cache-buster to ensure the number updates every load
+        fetch("https://api.counterapi.dev/v1/stg420githubio/hubvisits/up?_=" + Date.now())
             .then(res => res.json())
             .then(data => {
                 document.getElementById("hit-count").innerText = data.count;
             })
             .catch(err => {
                 console.error("Counter failed:", err);
-                document.getElementById("hit-count").innerText = "0";
+                document.getElementById("hit-count").innerText = "Error";
             });
 
         function switchPage(mode) {

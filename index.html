@@ -72,8 +72,7 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
-                <li><strong>Current Update:</strong> Fixed live counter connectivity using domain-specific fetch.</li>
-                <li><strong>Current Update:</strong> Cleaned up view counter to match text style exactly.</li>
+                <li><strong>Current Update:</strong> Implemented direct JSON fetch for hit counter.</li>
                 <li><strong>Current Update:</strong> Increased font sizes for better UI scaling.</li>
                 <li><strong>Current Update:</strong> Added universal site view counter to the header.</li>
                 <li><strong>Current Update:</strong> Implemented unified page navigation and transition animations.</li>
@@ -94,7 +93,7 @@
     </div>
 
     <script>
-        // Fetch raw count specifically for your domain
+        // Fetch raw count specifically for your domain using JSON API
         fetch("https://hits.sh/stg420.github.io.json?url=stg420.github.io")
             .then(res => res.json())
             .then(data => {
@@ -102,6 +101,7 @@
             })
             .catch(err => {
                 console.error("Counter failed:", err);
+                document.getElementById("hit-count").innerText = "0";
             });
 
         function switchPage(mode) {

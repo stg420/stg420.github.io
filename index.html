@@ -16,13 +16,14 @@
         h1 {
             color: #38bdf8;
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
+        .subtitle { color: #94a3b8; margin-bottom: 40px; }
+        
         .game-grid {
             display: flex;
             flex-wrap: wrap;
-            /* Changed to flex-start for left alignment */
-            justify-content: flex-start;
+            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -32,12 +33,12 @@
             border-radius: 10px;
             display: inline-block;
             width: 240px;
-            height: 320px;
             margin: 12px;
             border: 1px solid #334155;
             transition: transform 0.2s;
             vertical-align: top;
             text-align: center;
+            position: relative;
         }
         .game-card:hover {
             transform: scale(1.05);
@@ -53,8 +54,22 @@
         }
         h2 {
             font-size: 1.1rem;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
             color: #f8fafc;
+        }
+        .game-meta {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: block;
+            margin-top: 2px;
+        }
+        .recent-tag {
+            font-size: 0.75rem;
+            color: #38bdf8;
+            font-weight: bold;
+            display: block;
+            margin-top: 4px;
+            margin-bottom: 8px;
         }
         .play-btn {
             background-color: #38bdf8;
@@ -63,103 +78,143 @@
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
-            margin-top: 8px;
+            display: block;
+            margin-top: 10px;
+            transition: transform 0.2s;
         }
         .play-btn:hover {
             background-color: #7dd3fc;
+            transform: scale(1.05);
+        }
+        .star-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #334155;
+            font-size: 20px;
+            transition: color 0.2s;
+        }
+        .star-icon:hover {
+            color: #fbbf24;
         }
     </style>
 </head>
 <body>
 
     <h1>Josh Entertainment Hub</h1>
+    <p class="subtitle">12 Games Available | <a href="#" style="color: #38bdf8;">View Favorites</a></p>
 
     <div class="game-grid">
         <!-- Kindergarten 1 -->
         <div class="game-card">
             <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1">
             <h2>Kindergarten 1</h2>
+            <span class="game-meta">Category: Puzzle, Indie</span>
             <a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
         <!-- Kindergarten 2 -->
         <div class="game-card">
             <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2">
             <h2>Kindergarten 2</h2>
+            <span class="game-meta">Category: Puzzle, Indie</span>
             <a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
         <!-- Kindergarten 3 -->
         <div class="game-card">
             <img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3">
             <h2>Kindergarten 3</h2>
+            <span class="game-meta">Category: Puzzle</span>
+            <span class="recent-tag">Recently Added</span>
             <a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- Bendy Card -->
+        <!-- Bendy -->
         <div class="game-card">
             <img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine">
             <h2>Bendy And The Ink Machine</h2>
+            <span class="game-meta">Category: Horror</span>
             <a href="https://stg420.github.io/batim/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- Baldi's Basics Plus Card -->
+        <!-- Baldi's Basics Plus -->
         <div class="game-card">
             <img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus">
             <h2>Baldi's Basics Plus</h2>
+            <span class="game-meta">Category: Horror</span>
             <a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- TABS Card -->
+        <!-- TABS -->
         <div class="game-card">
             <img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator">
             <h2>TABS</h2>
+            <span class="game-meta">Category: Strategy</span>
             <a href="https://stg420.github.io/tabs/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- GTA III Card -->
+        <!-- GTA III -->
         <div class="game-card">
             <img src="https://www.igrandtheftauto.com/content/images/3253-gtaiii-10th-anniversary-european-cover-art.jpg" alt="Grand Theft Auto 3">
             <h2>Grand Theft Auto 3</h2>
+            <span class="game-meta">Category: Action</span>
             <a href="https://stg420.github.io/gta3/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- Schoolboy Runaway Card -->
+        <!-- Schoolboy Runaway -->
         <div class="game-card">
             <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co98mu.webp" alt="Schoolboy Runaway">
             <h2>Schoolboy Runaway</h2>
+            <span class="game-meta">Category: Horror</span>
             <a href="https://stg420.github.io/schoolboy/" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
         <!-- Hotline Miami -->
         <div class="game-card">
             <img src="https://xboxwire.thesourcemediaassets.com/sites/2/2020/04/HotlineMiamiCollection_Thumbnail.jpg" alt="Hotline Miami">
             <h2>Hotline Miami</h2>
+            <span class="game-meta">Category: Action</span>
             <a href="https://stg420.github.io/hotlinemiami" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
         <!-- Christmas Massacre -->
         <div class="game-card">
             <img src="https://cdn.mobygames.com/9e4ea688-ac11-11ed-9584-02420a000136.webp" alt="Christmas Massacre">
             <h2>Christmas Massacre</h2>
+            <span class="game-meta">Category: Horror</span>
             <a href="https://stg420.github.io/christmas" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
 
-        <!-- goose -->
+        <!-- Untitled Goose Game -->
         <div class="game-card">
             <img src="https://m.media-amazon.com/images/M/MV5BN2ViNmMzMjYtMmQyMC00YmJjLThiNDYtMTUwOWMwNWQ3MWE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Untitled Goose Game">
             <h2>Untitled Goose Game</h2>
+            <span class="game-meta">Category: Comedy</span>
             <a href="https://stg420.github.io/goose" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
-       
-        <!-- dumb ways to die -->
+        
+        <!-- Dumb Ways To Die -->
         <div class="game-card">
             <img src="https://assets.games.gg/Dumb_ways_to_die_cover_9bce4cec75.png" alt="Dumb Ways To Die">
             <h2>Dumb Ways To Die</h2>
+            <span class="game-meta">Category: Arcade</span>
             <a href="https://stg420.github.io/dumb" class="play-btn">Play</a>
+            <span class="star-icon">★</span>
         </div>
-        
+         
     </div>
 
 </body>

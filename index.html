@@ -72,20 +72,7 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
-                <li><strong>Current Update:</strong> Added cache-busting logic to counter for guaranteed updates.</li>
-                <li><strong>Current Update:</strong> Replaced hit tracker with CounterAPI for native text counting.</li>
-                <li><strong>Current Update:</strong> Increased font sizes for better UI scaling.</li>
-                <li><strong>Current Update:</strong> Added universal site view counter to the header.</li>
-                <li><strong>Current Update:</strong> Implemented unified page navigation and transition animations.</li>
-                <li><strong>Site Feature:</strong> Added "No Favorites" empty state messaging.</li>
-                <li><strong>Site Addition:</strong> Dedicated scrollable Changelog page implemented.</li>
-                <li><strong>Site Addition:</strong> Added Favorites system with star persistence.</li>
-                <li><strong>Site Addition:</strong> Added category tabs and "Recently Added" labels to game cards.</li>
-                <li><strong>Site Addition:</strong> Smooth animation transitions implemented for view switching.</li>
-                <li><strong>Game Additions:</strong> Added Baldis Basics Plus, TABS, GTA 3, Schoolboy Runaway, Hotline Miami, Christmas Massacre, Untitled Goose Game, and Dumb Ways To Die.</li>
-                <li><strong>Site Addition:</strong> Added Animations When Hovering Over Game Card or Play Button.</li>
-                <li><strong>Game Additions:</strong> Initial release containing Kindergarten 1, 2, 3, and Bendy And The Ink Machine.</li>
-                <li><strong>Launch:</strong> Website first created.</li>
+                <li><strong>Current Update:</strong> Switched to legacy countapi for stability.</li>
             </ul>
             <button class="play-btn" onclick="switchPage('home')">Back to Games</button>
         </div>
@@ -94,14 +81,14 @@
     </div>
 
     <script>
-        // Fetch with cache-buster to ensure the number updates every load
-        fetch("https://api.counterapi.dev/v1/stg420githubio/hubvisits/up?_=" + Date.now())
-            .then(res => res.json())
+        // Using the highly reliable api.countapi.xyz service
+        fetch("https://api.countapi.xyz/hit/stg420.github.io/visits")
+            .then(response => response.json())
             .then(data => {
-                document.getElementById("hit-count").innerText = data.count;
+                document.getElementById("hit-count").innerText = data.value;
             })
-            .catch(err => {
-                console.error("Counter failed:", err);
+            .catch(error => {
+                console.error("Counter failed:", error);
                 document.getElementById("hit-count").innerText = "Error";
             });
 

@@ -39,16 +39,18 @@
 <body>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
-    <p class="subtitle" id="subInfo">12 Games Available | 
+    <p class="subtitle" id="subInfo">14 Games Available | 
         <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
         <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
 
     <div id="mainContainer">
         <div id="gameGrid" class="game-grid">
+            <div class="game-card" data-id="hl"><img src="https://archive.org/download/xashdroid-32/xash3dfwgs.png" alt="Half-Life"><h2>Half-Life</h2><span class="game-meta">Category: Action, Shooter</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/hl" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'hl')">★</span></div>
+            <div class="game-card" data-id="portal"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg" alt="Portal"><h2>Portal</h2><span class="game-meta">Category: Puzzle, Platformer</span><span class="recent-tag">Recently Added</span><a href="https://yikes.pw/portal" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'portal')">★</span></div>
             <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
             <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
-            <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
+            <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
             <div class="game-card" data-id="batim"><img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine"><h2>Bendy And The Ink Machine</h2><span class="game-meta">Category: Horror, Survival</span><a href="https://stg420.github.io/batim/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'batim')">★</span></div>
             <div class="game-card" data-id="baldi"><img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus"><h2>Baldi's Basics Plus</h2><span class="game-meta">Category: Horror, Educational</span><a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'baldi')">★</span></div>
             <div class="game-card" data-id="tabs"><img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator"><h2>TABS</h2><span class="game-meta">Category: Strategy, Physics</span><a href="https://stg420.github.io/tabs/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'tabs')">★</span></div>
@@ -63,7 +65,8 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
-                <li><strong>UI Enhancements:</strong> Cleaned up navigation and fixed star favorite persistent storage.</li>
+                <li><strong>Update:</strong> Added "Half-Life" and "Portal" to the library.</li>
+                <li><strong>Cleanup:</strong> Removed "Recently Added" tag from Kindergarten 3.</li>
             </ul>
             <button class="play-btn" onclick="switchPage('home')">Back to Games</button>
         </div>

@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Josh Entertainment Hub</title>
+    <!-- CounterAPI Library -->
+    <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
+    
     <style>
         body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
         
@@ -44,7 +47,7 @@
 
     <div class="view-counter">
         <img src="https://img.icons8.com/ios-filled/50/64748b/visible--v1.png" class="eye-icon" alt="eye icon">
-        <span>Views: <span id="hit-count">...</span></span>
+        <span>Views: <span id="hit-count">Loading...</span></span>
     </div>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
@@ -72,7 +75,8 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
-                <li><strong>Current Update:</strong> Switched to legacy countapi for stability.</li>
+                <li><strong>Current Update:</strong> Integrated live visitor counter using CounterAPI.</li>
+                <li><strong>UI Enhancements:</strong> Cleaned up navigation and fixed star favorite persistent storage.</li>
             </ul>
             <button class="play-btn" onclick="switchPage('home')">Back to Games</button>
         </div>
@@ -81,66 +85,75 @@
     </div>
 
     <script>
-        // Using the highly reliable api.countapi.xyz service
-        fetch("https://api.countapi.xyz/hit/stg420.github.io/visits")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("hit-count").innerText = data.value;
-            })
-            .catch(error => {
-                console.error("Counter failed:", error);
-                document.getElementById("hit-count").innerText = "Error";
-            });
+        // CounterAPI Integration
+        const counter = new Counter({ workspace: "stg420s-team" });
+        counter.up("hubvisits").then(result => {
+            document.getElementById("hit-count").innerText = result.value;
+        }).catch(err => {
+            console.error("Counter failed:", err);
+            document.getElementById("hit-count").innerText = "Error";
+        });
 
-        function switchPage(mode) {
-            let container = document.getElementById("mainContainer");
-            container.style.opacity = 0;
+        // Navigation logic
+        function switchPage(page) {
+            const grid = document.getElementById("gameGrid");
+            const changelog = document.getElementById("changelog");
+            const emptyMsg = document.getElementById("emptyMsg");
+            const title = document.getElementById("pageTitle");
+            const subInfo = document.getElementById("subInfo");
 
-            setTimeout(() => {
-                let grid = document.getElementById("gameGrid");
-                let log = document.getElementById("changelog");
-                let empty = document.getElementById("emptyMsg");
-                let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+            if (page === "home") {
+                grid.style.display = "flex";
+                changelog.style.display = "none";
+                emptyMsg.style.display = "none";
+                title.innerText = "Josh Entertainment Hub";
+                subInfo.style.display = "block";
+            } else if (page === "changelog") {
+                grid.style.display = "none";
+                changelog.style.display = "block";
+                emptyMsg.style.display = "none";
+                title.innerText = "Changelog";
+                subInfo.style.display = "none";
+            } else if (page === "favorites") {
+                const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+                grid.style.display = "flex";
+                changelog.style.display = "none";
+                title.innerText = "Favorite Games";
+                subInfo.style.display = "none";
                 
-                grid.style.display = (mode === "changelog") ? "none" : "flex";
-                log.style.display = (mode === "changelog") ? "block" : "none";
-                
-                if (mode === "favorites") {
-                    document.querySelectorAll(".game-card").forEach(card => {
-                        card.style.display = favs.includes(card.getAttribute("data-id")) ? "inline-block" : "none";
-                    });
-                    empty.style.display = (favs.length === 0) ? "block" : "none";
-                    document.getElementById("pageTitle").innerText = "Favorite Games";
-                    document.getElementById("viewBtn").innerText = "Return Home";
-                    document.getElementById("viewBtn").setAttribute("onclick", "switchPage(\"home\")");
-                } else if (mode === "home") {
-                    document.querySelectorAll(".game-card").forEach(card => card.style.display = "inline-block");
-                    empty.style.display = "none";
-                    document.getElementById("pageTitle").innerText = "Josh Entertainment Hub";
-                    document.getElementById("viewBtn").innerText = "View Favorites";
-                    document.getElementById("viewBtn").setAttribute("onclick", "switchPage(\"favorites\")");
-                } else {
-                    empty.style.display = "none";
-                    document.getElementById("pageTitle").innerText = "Site Changelog";
-                    document.getElementById("viewBtn").innerText = "View Games";
-                    document.getElementById("viewBtn").setAttribute("onclick", "switchPage(\"home\")");
-                }
-                
-                container.style.opacity = 1;
-            }, 300);
+                const cards = document.querySelectorAll(".game-card");
+                let hasFav = false;
+                cards.forEach(card => {
+                    const id = card.getAttribute("data-id");
+                    if (favs.includes(id)) {
+                        card.style.display = "inline-block";
+                        hasFav = true;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+                emptyMsg.style.display = hasFav ? "none" : "block";
+            }
         }
 
+        // Favorites logic
         function toggleFavorite(el, id) {
-            let favs = JSON.parse(localStorage.getItem("favs") || "[]");
-            if (favs.includes(id)) { favs = favs.filter(item => item !== id); el.classList.remove("active"); } 
-            else { favs.push(id); el.classList.add("active"); }
-            localStorage.setItem("favs", JSON.stringify(favs));
+            let favs = JSON.parse(localStorage.getItem("favorites") || "[]");
+            if (favs.includes(id)) {
+                favs = favs.filter(f => f !== id);
+                el.classList.remove("active");
+            } else {
+                favs.push(id);
+                el.classList.add("active");
+            }
+            localStorage.setItem("favorites", JSON.stringify(favs));
         }
 
         window.onload = () => {
-            let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+            const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
             document.querySelectorAll(".star-icon").forEach(star => {
-                if (favs.includes(star.parentElement.getAttribute("data-id"))) star.classList.add("active");
+                const id = star.parentElement.getAttribute("data-id");
+                if (favs.includes(id)) star.classList.add("active");
             });
         };
     </script>

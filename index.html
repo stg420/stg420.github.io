@@ -6,12 +6,13 @@
     <title>Josh Entertainment Hub</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
-        h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.5rem; color: #94a3b8; margin-bottom: 40px; }
+        h1 { color: #38bdf8; font-size: 3.5rem; margin-bottom: 10px; }
+        .subtitle { font-size: 1.8rem; color: #94a3b8; margin-bottom: 40px; }
         
-        /* View Counter */
-        .view-counter { position: absolute; top: 20px; left: 20px; color: #64748b; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-        .view-counter img { width: 24px; height: auto; opacity: 0.6; }
+        /* Updated View Counter - Larger and working */
+        .view-counter { position: absolute; top: 20px; left: 20px; color: #94a3b8; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; }
+        .view-counter .eye-icon { width: 32px; height: 32px; opacity: 0.8; }
+        .view-counter .hit-badge { height: 30px; }
 
         /* Main Container for Transitions */
         #mainContainer { transition: opacity 0.3s ease; }
@@ -43,8 +44,8 @@
 <body>
 
     <div class="view-counter">
-        <img src="https://img.icons8.com/ios-filled/50/64748b/visible--v1.png" alt="eye icon">
-        <span>Views: <img src="https://hits.seoflash.in/count?p=josh-hub-site&start=50" alt="Hit Counter"></span>
+        <img src="https://img.icons8.com/ios-filled/50/64748b/visible--v1.png" class="eye-icon" alt="eye icon">
+        <span>Views: <img src="https://hits.sh/stg420.github.io.svg?start=50&style=flat-square" class="hit-badge" alt="Hit Counter"></span>
     </div>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
@@ -72,6 +73,7 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Current Update:</strong> Updated view counter and increased font sizes.</li>
                 <li><strong>Current Update:</strong> Added universal site view counter to the header.</li>
                 <li><strong>Current Update:</strong> Implemented unified page navigation and transition animations.</li>
                 <li><strong>Site Feature:</strong> Added "No Favorites" empty state messaging.</li>

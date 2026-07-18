@@ -7,7 +7,7 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
         
-        /* View Counter - Plain text style to match your screenshot */
+        /* View Counter - Plain text style */
         .view-counter { position: absolute; top: 20px; left: 20px; color: #94a3b8; font-size: 1.5rem; display: flex; align-items: center; gap: 12px; }
         .view-counter .eye-icon { width: 32px; height: 32px; opacity: 0.8; }
         #hit-count { color: #f8fafc; font-weight: bold; }
@@ -44,7 +44,7 @@
 
     <div class="view-counter">
         <img src="https://img.icons8.com/ios-filled/50/64748b/visible--v1.png" class="eye-icon" alt="eye icon">
-        <span>Views: <span id="hit-count">0</span></span>
+        <span>Views: <span id="hit-count">...</span></span>
     </div>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
@@ -72,6 +72,7 @@
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Current Update:</strong> Fixed live counter connectivity using domain-specific fetch.</li>
                 <li><strong>Current Update:</strong> Cleaned up view counter to match text style exactly.</li>
                 <li><strong>Current Update:</strong> Increased font sizes for better UI scaling.</li>
                 <li><strong>Current Update:</strong> Added universal site view counter to the header.</li>
@@ -93,11 +94,14 @@
     </div>
 
     <script>
-        // Fetch raw count from Hits.sh
-        fetch("https://hits.sh/stg420.github.io.json")
+        // Fetch raw count specifically for your domain
+        fetch("https://hits.sh/stg420.github.io.json?url=stg420.github.io")
             .then(res => res.json())
             .then(data => {
                 document.getElementById("hit-count").innerText = data.value;
+            })
+            .catch(err => {
+                console.error("Counter failed:", err);
             });
 
         function switchPage(mode) {

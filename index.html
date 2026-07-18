@@ -39,7 +39,7 @@
 <body>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
-    <p class="subtitle" id="subInfo">14 Games Available | 
+    <p class="subtitle" id="subInfo">15 Games Available | 
         <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
         <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
@@ -48,7 +48,7 @@
         <div id="gameGrid" class="game-grid">
             <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
             <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
-            <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
+            <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
             <div class="game-card" data-id="batim"><img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine"><h2>Bendy And The Ink Machine</h2><span class="game-meta">Category: Horror, Survival</span><a href="https://stg420.github.io/batim/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'batim')">★</span></div>
             <div class="game-card" data-id="baldi"><img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus"><h2>Baldi's Basics Plus</h2><span class="game-meta">Category: Horror, Educational</span><a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'baldi')">★</span></div>
             <div class="game-card" data-id="tabs"><img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator"><h2>TABS</h2><span class="game-meta">Category: Strategy, Physics</span><a href="https://stg420.github.io/tabs/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'tabs')">★</span></div>
@@ -60,11 +60,13 @@
             <div class="game-card" data-id="dumb"><img src="https://assets.games.gg/Dumb_ways_to_die_cover_9bce4cec75.png" alt="Dumb Ways To Die"><h2>Dumb Ways To Die</h2><span class="game-meta">Category: Arcade, Funny</span><a href="https://stg420.github.io/dumb" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'dumb')">★</span></div>
             <div class="game-card" data-id="hl1"><img src="https://archive.org/download/xashdroid-32/xash3dfwgs.png" alt="Half-Life"><h2>Half-Life</h2><span class="game-meta">Category: Action, Shooter</span><a href="https://stg420.github.io/hl" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'hl1')">★</span></div>
             <div class="game-card" data-id="portal"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg" alt="Portal"><h2>Portal</h2><span class="game-meta">Category: Puzzle, Platformer</span><a href="https://yikes.pw/portal" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'portal')">★</span></div>
+            <div class="game-card" data-id="plague"><img src="https://www.cubed3.com/wp-content/uploads/2025/02/plague-inc-evolved-pc-art-banner.jpg" alt="Plague Inc"><h2>Plague Inc</h2><span class="game-meta">Category: Strategy, Simulation</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/plagueinc/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'plague')">★</span></div>
         </div>
 
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Game Addition:</strong> Added Plague Inc.</li>
                 <li><strong>Game Addition:</strong> Added half life and portal.</li>
                 <li><strong>Current Update:</strong> Implemented unified page navigation and transition animations for all sections.</li>
                 <li><strong>Site Feature:</strong> Added "No Favorites" empty state messaging.</li>

@@ -39,7 +39,7 @@
 <body>
 
     <h1 id="pageTitle">Josh Entertainment Hub</h1>
-    <p class="subtitle" id="subInfo">16 Games Available | 
+    <p class="subtitle" id="subInfo">18 Games Available | 
         <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
         <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
@@ -62,11 +62,31 @@
             <div class="game-card" data-id="portal"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg" alt="Portal"><h2>Portal</h2><span class="game-meta">Category: Puzzle, Platformer</span><a href="https://yikes.pw/portal" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'portal')">★</span></div>
             <div class="game-card" data-id="plague"><img src="https://www.cubed3.com/wp-content/uploads/2025/02/plague-inc-evolved-pc-art-banner.jpg" alt="Plague Inc"><h2>Plague Inc</h2><span class="game-meta">Category: Strategy, Simulation</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/plagueinc/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'plague')">★</span></div>
             <div class="game-card" data-id="mc188"><img src="https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-png-transparent.png" alt="Minecraft 1.8.8"><h2>Minecraft 1.8.8</h2><span class="game-meta">Category: Sandbox, Adventure</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/mc/mc" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'mc188')">★</span></div>
+            
+            <!-- Plants vs. Zombies -->
+            <div class="game-card" data-id="pvz">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/PlantsvsZombiesCoverArt.jpg/250px-PlantsvsZombiesCoverArt.jpg" alt="Plants vs. Zombies">
+                <h2>Plants vs. Zombies</h2>
+                <span class="game-meta">Category: Strategy, Tower Defense</span>
+                <a href="https://stg420.github.io/pvz" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'pvz')">★</span>
+            </div>
+
+            <!-- Granny -->
+            <div class="game-card" data-id="granny">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGuwPm1hTrkGGet0chLURkB8HKxaOWiplxX0G0jbzDQkZRLChsJwHeQcze&s=10" alt="Granny">
+                <h2>Granny</h2>
+                <span class="game-meta">Category: Horror, Escape</span>
+                <a href="https://stg420.github.io/granny/" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'granny')">★</span>
+            </div>
         </div>
 
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Game Addition:</strong> Added Plants vs. Zombies.</li>
+                <li><strong>Game Addition:</strong> Added Granny.</li>
                 <li><strong>Game Addition:</strong> Added Minecraft 1.8.8.</li>
                 <li><strong>Game Addition:</strong> Added Plague Inc.</li>
                 <li><strong>Game Addition:</strong> Added half life and portal.</li>

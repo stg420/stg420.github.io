@@ -8,7 +8,6 @@
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
         h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 10px; }
         
-        /* Updated subtitle size */
         .subtitle { font-size: 1.5rem; color: #94a3b8; margin-bottom: 40px; transition: all 0.3s ease; }
         
         .game-grid { display: flex; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; transition: opacity 0.3s ease; }
@@ -27,8 +26,10 @@
         .star-icon:hover { color: #94a3b8; }
         .star-icon.active { color: #fbbf24; }
 
-        /* Changelog Section */
-        #changelog { max-width: 800px; margin: 50px auto; text-align: left; background: #1e293b; padding: 20px; border-radius: 10px; display: none; }
+        /* Expanded Changelog Section */
+        #changelog { max-width: 900px; margin: 50px auto; text-align: left; background: #1e293b; padding: 30px; border-radius: 10px; display: none; height: 500px; overflow-y: auto; }
+        #changelog ul { list-style: none; padding: 0; }
+        #changelog li { margin-bottom: 20px; border-bottom: 1px solid #334155; padding-bottom: 15px; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -40,149 +41,64 @@
     </p>
 
     <div id="gameGrid" class="game-grid">
-        <!-- Game Cards remain exactly as before -->
-        <div class="game-card" data-id="kg1">
-            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1">
-            <h2>Kindergarten 1</h2>
-            <span class="game-meta">Category: Puzzle, Indie</span>
-            <a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span>
-        </div>
-        <div class="game-card" data-id="kg2">
-            <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2">
-            <h2>Kindergarten 2</h2>
-            <span class="game-meta">Category: Puzzle, Indie</span>
-            <a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span>
-        </div>
-        <div class="game-card" data-id="kg3">
-            <img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3">
-            <h2>Kindergarten 3</h2>
-            <span class="game-meta">Category: Puzzle</span>
-            <span class="recent-tag">Recently Added</span>
-            <a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span>
-        </div>
-        <div class="game-card" data-id="batim">
-            <img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine">
-            <h2>Bendy And The Ink Machine</h2>
-            <span class="game-meta">Category: Horror, Survival</span>
-            <a href="https://stg420.github.io/batim/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'batim')">★</span>
-        </div>
-        <div class="game-card" data-id="baldi">
-            <img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus">
-            <h2>Baldi's Basics Plus</h2>
-            <span class="game-meta">Category: Horror, Educational</span>
-            <a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'baldi')">★</span>
-        </div>
-        <div class="game-card" data-id="tabs">
-            <img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator">
-            <h2>TABS</h2>
-            <span class="game-meta">Category: Strategy, Physics</span>
-            <a href="https://stg420.github.io/tabs/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'tabs')">★</span>
-        </div>
-        <div class="game-card" data-id="gta3">
-            <img src="https://www.igrandtheftauto.com/content/images/3253-gtaiii-10th-anniversary-european-cover-art.jpg" alt="Grand Theft Auto 3">
-            <h2>Grand Theft Auto 3</h2>
-            <span class="game-meta">Category: Action, Open World</span>
-            <a href="https://stg420.github.io/gta3/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'gta3')">★</span>
-        </div>
-        <div class="game-card" data-id="schoolboy">
-            <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co98mu.webp" alt="Schoolboy Runaway">
-            <h2>Schoolboy Runaway</h2>
-            <span class="game-meta">Category: Horror, Escape</span>
-            <a href="https://stg420.github.io/schoolboy/" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'schoolboy')">★</span>
-        </div>
-        <div class="game-card" data-id="hotline">
-            <img src="https://xboxwire.thesourcemediaassets.com/sites/2/2020/04/HotlineMiamiCollection_Thumbnail.jpg" alt="Hotline Miami">
-            <h2>Hotline Miami</h2>
-            <span class="game-meta">Category: Action, Shooter</span>
-            <a href="https://stg420.github.io/hotlinemiami" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'hotline')">★</span>
-        </div>
-        <div class="game-card" data-id="xmas">
-            <img src="https://cdn.mobygames.com/9e4ea688-ac11-11ed-9584-02420a000136.webp" alt="Christmas Massacre">
-            <h2>Christmas Massacre</h2>
-            <span class="game-meta">Category: Horror, Slasher</span>
-            <a href="https://stg420.github.io/christmas" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'xmas')">★</span>
-        </div>
-        <div class="game-card" data-id="goose">
-            <img src="https://m.media-amazon.com/images/M/MV5BN2ViNmMzMjYtMmQyMC00YmJjLThiNDYtMTUwOWMwNWQ3MWE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Untitled Goose Game">
-            <h2>Untitled Goose Game</h2>
-            <span class="game-meta">Category: Comedy, Stealth</span>
-            <a href="https://stg420.github.io/goose" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'goose')">★</span>
-        </div>
-        <div class="game-card" data-id="dumb">
-            <img src="https://assets.games.gg/Dumb_ways_to_die_cover_9bce4cec75.png" alt="Dumb Ways To Die">
-            <h2>Dumb Ways To Die</h2>
-            <span class="game-meta">Category: Arcade, Funny</span>
-            <a href="https://stg420.github.io/dumb" class="play-btn">Play</a>
-            <span class="star-icon" onclick="toggleFavorite(this, 'dumb')">★</span>
-        </div>
+        <!-- Game Cards -->
+        <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
+        <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
+        <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
+        <div class="game-card" data-id="batim"><img src="https://static.wikia.nocookie.net/bendy-and-the-ink-machine/images/3/3b/BATIM_Steam_thumbnail_2024.jpg" alt="Bendy and the Ink Machine"><h2>Bendy And The Ink Machine</h2><span class="game-meta">Category: Horror, Survival</span><a href="https://stg420.github.io/batim/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'batim')">★</span></div>
+        <div class="game-card" data-id="baldi"><img src="https://static.wikia.nocookie.net/baldis-basics-in-education-and-learning/images/3/36/Baldi%27s_Basics_Plus_Cover.png" alt="Baldi's Basics Plus"><h2>Baldi's Basics Plus</h2><span class="game-meta">Category: Horror, Educational</span><a href="https://stg420.github.io/baldiplus/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'baldi')">★</span></div>
+        <div class="game-card" data-id="tabs"><img src="https://cdna.artstation.com/p/assets/images/images/016/974/668/large/pontus-ullbors-tabs-steamstore-1-artstation.jpg" alt="Totally Accurate Battle Simulator"><h2>TABS</h2><span class="game-meta">Category: Strategy, Physics</span><a href="https://stg420.github.io/tabs/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'tabs')">★</span></div>
+        <div class="game-card" data-id="gta3"><img src="https://www.igrandtheftauto.com/content/images/3253-gtaiii-10th-anniversary-european-cover-art.jpg" alt="Grand Theft Auto 3"><h2>Grand Theft Auto 3</h2><span class="game-meta">Category: Action, Open World</span><a href="https://stg420.github.io/gta3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'gta3')">★</span></div>
+        <div class="game-card" data-id="schoolboy"><img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co98mu.webp" alt="Schoolboy Runaway"><h2>Schoolboy Runaway</h2><span class="game-meta">Category: Horror, Escape</span><a href="https://stg420.github.io/schoolboy/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'schoolboy')">★</span></div>
+        <div class="game-card" data-id="hotline"><img src="https://xboxwire.thesourcemediaassets.com/sites/2/2020/04/HotlineMiamiCollection_Thumbnail.jpg" alt="Hotline Miami"><h2>Hotline Miami</h2><span class="game-meta">Category: Action, Shooter</span><a href="https://stg420.github.io/hotlinemiami" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'hotline')">★</span></div>
+        <div class="game-card" data-id="xmas"><img src="https://cdn.mobygames.com/9e4ea688-ac11-11ed-9584-02420a000136.webp" alt="Christmas Massacre"><h2>Christmas Massacre</h2><span class="game-meta">Category: Horror, Slasher</span><a href="https://stg420.github.io/christmas" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'xmas')">★</span></div>
+        <div class="game-card" data-id="goose"><img src="https://m.media-amazon.com/images/M/MV5BN2ViNmMzMjYtMmQyMC00YmJjLThiNDYtMTUwOWMwNWQ3MWE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Untitled Goose Game"><h2>Untitled Goose Game</h2><span class="game-meta">Category: Comedy, Stealth</span><a href="https://stg420.github.io/goose" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'goose')">★</span></div>
+        <div class="game-card" data-id="dumb"><img src="https://assets.games.gg/Dumb_ways_to_die_cover_9bce4cec75.png" alt="Dumb Ways To Die"><h2>Dumb Ways To Die</h2><span class="game-meta">Category: Arcade, Funny</span><a href="https://stg420.github.io/dumb" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'dumb')">★</span></div>
     </div>
 
-<!-- Changelog Page -->
+    <!-- Changelog Page -->
     <div id="changelog">
         <h2>Site Changelog</h2>
         <ul>
-            <li><strong>Current Update:</strong><br>Added dedicated scrollable Changelog page.</li>
-            <li><strong>Major Update:</strong><br>Added "Favorites" system with star persistence.</li>
-            <li><strong>UI Overhaul:</strong><br>Added smooth animations, new category tags, and "Recently Added" labels.</li>
-            <li><strong>Game Additions:</strong><br>Added Baldis Basics Plus, TABS, GTA 3, Schoolboy Runaway, Hotline Miami, Christmas Massacre, Untitled Goose Game, Dumb Ways To Die.</li>
-            <li><strong>Launch:</strong><br>Website first created.</li>
+            <li><strong>Current Update:</strong> Dedicated scrollable Changelog page implemented.</li>
+            <li><strong>Site Feature Addition:</strong> Added Favorites system with star persistence.</li>
+            <li><strong>Site Feature Addition:</strong> Added category tabs and "Recently Added" labels to game cards.</li>
+            <li><strong>Site Feature Addition:</strong> Smooth animation transitions implemented for view switching.</li>
+            <li><strong>Game Additions:</strong> Added Baldis Basics Plus, TABS, GTA 3, Schoolboy Runaway, Hotline Miami, Christmas Massacre, Untitled Goose Game, and Dumb Ways To Die.</li>
+            <li><strong>Site Major Overhaul:</strong> Initial release containing Kindergarten 1, 2, 3, and Bendy And The Ink Machine.</li>
+            <li><strong>Launch:</strong> Website first created.</li>
         </ul>
         <button class="play-btn" onclick="toggleChangelog()">Back to Games</button>
     </div>
 
     <script>
         let showOnlyFavorites = false;
-
         function toggleFavorite(el, id) {
             let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-            if (favs.includes(id)) {
-                favs = favs.filter(item => item !== id);
-                el.classList.remove('active');
-            } else {
-                favs.push(id);
-                el.classList.add('active');
-            }
+            if (favs.includes(id)) { favs = favs.filter(item => item !== id); el.classList.remove('active'); } 
+            else { favs.push(id); el.classList.add('active'); }
             localStorage.setItem('favs', JSON.stringify(favs));
         }
-
         function toggleChangelog() {
             let grid = document.getElementById('gameGrid');
             let log = document.getElementById('changelog');
             grid.style.display = (grid.style.display === 'none') ? 'flex' : 'none';
             log.style.display = (log.style.display === 'block') ? 'none' : 'block';
         }
-
         function toggleView() {
             showOnlyFavorites = !showOnlyFavorites;
             let grid = document.getElementById('gameGrid');
             grid.style.opacity = 0;
-            
             setTimeout(() => {
                 let cards = document.querySelectorAll('.game-card');
                 let favs = JSON.parse(localStorage.getItem('favs') || '[]');
                 document.getElementById('pageTitle').innerText = showOnlyFavorites ? "Favorite Games" : "Josh Entertainment Hub";
                 document.getElementById('viewBtn').innerText = showOnlyFavorites ? "Return Home" : "View Favorites";
                 document.getElementById('subInfo').firstChild.textContent = showOnlyFavorites ? `${favs.length} Games Favorited | ` : "12 Games Available | ";
-                
-                cards.forEach(card => {
-                    let id = card.getAttribute('data-id');
-                    card.style.display = (showOnlyFavorites && !favs.includes(id)) ? 'none' : 'inline-block';
-                });
+                cards.forEach(card => { let id = card.getAttribute('data-id'); card.style.display = (showOnlyFavorites && !favs.includes(id)) ? 'none' : 'inline-block'; });
                 grid.style.opacity = 1;
             }, 300);
         }
-
         window.onload = () => {
             let favs = JSON.parse(localStorage.getItem('favs') || '[]');
             document.querySelectorAll('.star-icon').forEach(star => {

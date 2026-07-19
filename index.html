@@ -39,7 +39,7 @@
 <body>
 
     <h1 id="pageTitle">The Henny Vault</h1>
-    <p class="subtitle" id="subInfo">19 Games Available | 
+    <p class="subtitle" id="subInfo">20 Games Available | 
         <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
         <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
@@ -89,11 +89,20 @@
                 <a href="https://stg420.github.io/granny2/" class="play-btn">Play</a>
                 <span class="star-icon" onclick="toggleFavorite(this, 'granny2')">★</span>
             </div>
+
+            <div class="game-card" data-id="jsab">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e3/Just_Shapes_%26_Beats.jpg" alt="Just Shapes And Beats">
+                <h2>Just Shapes And Beats</h2>
+                <span class="game-meta">Category: Rhythm, Action</span>
+                <a href="https://stg420.github.io/jsab" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'jsab')">★</span>
+            </div>
         </div>
 
         <div id="changelog">
             <h2>Site Changelog</h2>
             <ul>
+                <li><strong>Game Addition:</strong> Added Just Shapes And Beats.</li>
                 <li><strong>Game Addition:</strong> Added Granny 2.</li>
                 <li><strong>Game Addition:</strong> Added Plants vs. Zombies.</li>
                 <li><strong>Game Addition:</strong> Added Granny.</li>

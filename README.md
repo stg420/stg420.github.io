@@ -49,3 +49,5 @@ This platform is custom-built to maximize user experience and frontend efficienc
 Created, developed, and maintained by **stg420 (Josh)**. 
 
 All assets, custom styling configurations, and script updates are pushed directly to this repository. To report bugs, request port fixes, or track live updates, monitor the commit history and site changelog.
+
+thanks

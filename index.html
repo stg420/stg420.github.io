@@ -9,8 +9,15 @@
         h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 10px; }
         .subtitle { font-size: 1.5rem; color: #94a3b8; margin-bottom: 20px; }
         
+        /* Search and Surprise Container */
+        #searchContainer { margin-bottom: 40px; display: flex; justify-content: center; align-items: center; gap: 15px; }
+
+        /* Buttons Styling */
+        .control-btn { padding: 12px 20px; border-radius: 25px; border: none; background-color: #38bdf8; color: #0f172a; font-weight: bold; cursor: pointer; transition: transform 0.2s; width: 140px; text-align: center; }
+        .control-btn:hover { transform: scale(1.05); }
+
         /* Search Bar Styling */
-        #gameSearch { padding: 12px 20px; border-radius: 25px; border: 1px solid #334155; background-color: #1e293b; color: white; width: 300px; font-size: 1rem; margin-bottom: 40px; outline: none; transition: border 0.3s; }
+        #gameSearch { padding: 12px 20px; border-radius: 25px; border: 1px solid #334155; background-color: #1e293b; color: white; width: 300px; font-size: 1rem; outline: none; transition: border 0.3s; }
         #gameSearch:focus { border-color: #38bdf8; }
         
         #mainContainer { transition: opacity 0.6s ease; }
@@ -47,11 +54,13 @@
         <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
 
-    <input type="text" id="gameSearch" placeholder="Search for a game..." onkeyup="filterGames()">
+    <div id="searchContainer">
+        <button id="surpriseBtn" class="control-btn" onclick="handleSurprise()">Surprise Me</button>
+        <input type="text" id="gameSearch" placeholder="Search for a game..." onkeyup="filterGames()">
+    </div>
 
     <div id="mainContainer">
         <div id="gameGrid" class="game-grid">
-            <!-- Game cards remain unchanged -->
             <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
             <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
             <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
@@ -80,6 +89,29 @@
     </div>
 
     <script>
+        let isSurpriseMode = false;
+
+        function handleSurprise() {
+            let btn = document.getElementById('surpriseBtn');
+            if (isSurpriseMode) {
+                // Return Home
+                window.location.reload();
+            } else {
+                // Surprise Me
+                let cards = document.querySelectorAll('.game-card');
+                let grid = document.getElementById('gameGrid');
+                let randomCard = cards[Math.floor(Math.random() * cards.length)];
+                
+                grid.innerHTML = "";
+                grid.appendChild(randomCard);
+                randomCard.style.opacity = 1;
+                randomCard.style.display = "inline-block";
+                
+                btn.innerText = "Return Home";
+                isSurpriseMode = true;
+            }
+        }
+
         function filterGames() {
             let input = document.getElementById('gameSearch').value.toLowerCase();
             let cards = document.querySelectorAll('.game-card');
@@ -88,15 +120,12 @@
 
             cards.forEach(card => {
                 let title = card.querySelector('h2').innerText.toLowerCase();
-                // Exact start-with matching
                 if (title.startsWith(input)) {
                     card.style.display = 'inline-block';
-                    // Delaying opacity to allow display block to render, creating animation
                     setTimeout(() => card.style.opacity = 1, 50);
                     visibleCount++;
                 } else {
                     card.style.opacity = 0;
-                    // Wait for the transition to finish before hiding
                     setTimeout(() => { if (card.style.opacity == 0) card.style.display = 'none'; }, 400);
                 }
             });

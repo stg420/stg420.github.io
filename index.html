@@ -14,7 +14,6 @@
         .control-btn:hover { background-color: #7dd3fc; transform: scale(1.05); }
         #gameSearch { padding: 10px 20px; border-radius: 20px; border: 1px solid #334155; background-color: #1e293b; color: white; width: 300px; }
 
-        /* Animation class */
         .fade-effect { transition: opacity 0.3s ease, transform 0.3s ease; opacity: 1; }
         .hidden { opacity: 0; transform: translateY(10px); }
 
@@ -57,7 +56,6 @@
 
     <div id="mainContainer" class="fade-effect">
         <div id="gameGrid" class="game-grid">
-            <!-- Game Cards -->
             <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
             <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
             <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
@@ -78,6 +76,14 @@
             <div class="game-card" data-id="granny"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGuwPm1hTrkGGet0chLURkB8HKxaOWiplxX0G0jbzDQkZRLChsJwHeQcze&s=10" alt="Granny"><h2>Granny</h2><span class="game-meta">Category: Horror, Escape</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/granny/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'granny')">★</span></div>
             <div class="game-card" data-id="granny2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1205040/header.jpg" alt="Granny 2"><h2>Granny 2</h2><span class="game-meta">Category: Horror, Escape</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/granny2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'granny2')">★</span></div>
             <div class="game-card" data-id="jsab"><img src="https://upload.wikimedia.org/wikipedia/en/e/e3/Just_Shapes_%26_Beats.jpg" alt="Just Shapes And Beats"><h2>Just Shapes And Beats</h2><span class="game-meta">Category: Rhythm, Action</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/jsab" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'jsab')">★</span></div>
+            
+            <!-- Secret Card -->
+            <div class="game-card" id="fnae-secret-card" data-id="fnae" style="display: none; border-color: #f59e0b;">
+                <img src="https://i.ytimg.com/vi/8zg3gJwAvgg/sddefault.jpg" alt="Five Nights At Epsteins">
+                <h2>Five Nights At Epsteins</h2>
+                <span class="game-meta">Category: Secret Horror</span>
+                <a href="https://stg420.github.io/fnae" class="play-btn">Play</a>
+            </div>
         </div>
 
         <div id="changelog">
@@ -115,6 +121,34 @@
     </div>
 
     <script>
+        let keyBuffer = "";
+        const secretCode = "hennyman";
+
+        document.addEventListener("keydown", (event) => {
+            if (document.activeElement.id === "gameSearch") return;
+            if (event.key.length === 1 && /[a-zA-Z]/.test(event.key)) {
+                keyBuffer += event.key.toLowerCase();
+                if (keyBuffer.length > secretCode.length) keyBuffer = keyBuffer.slice(-secretCode.length);
+                if (keyBuffer === secretCode) {
+                    applyAnimation(() => {
+                        document.getElementById('gameGrid').style.display = 'flex';
+                        document.getElementById('changelog').style.display = 'none';
+                        document.getElementById('emptyMsg').style.display = 'none';
+                        document.getElementById('noResultsMsg').style.display = 'none';
+                        document.querySelectorAll('.game-card').forEach(card => {
+                            card.style.display = (card.id === 'fnae-secret-card') ? 'inline-block' : 'none';
+                        });
+                        document.getElementById('pageTitle').innerText = "SECRET FOUND";
+                        document.getElementById('viewBtn').innerText = "Return Home";
+                        document.getElementById('viewBtn').setAttribute('onclick', "location.reload()");
+                    });
+                    keyBuffer = "";
+                }
+            } else {
+                keyBuffer = "";
+            }
+        });
+
         function applyAnimation(callback) {
             let container = document.getElementById('mainContainer');
             container.classList.add('hidden');
@@ -135,9 +169,10 @@
                 grid.style.display = (mode === 'changelog') ? 'none' : 'flex';
                 log.style.display = (mode === 'changelog') ? 'block' : 'none';
                 noRes.style.display = 'none';
+                document.getElementById('fnae-secret-card').style.display = 'none';
                 
                 if (mode === 'favorites') {
-                    document.querySelectorAll('.game-card').forEach(card => {
+                    document.querySelectorAll('.game-card:not(#fnae-secret-card)').forEach(card => {
                         card.style.display = favs.includes(card.getAttribute('data-id')) ? 'inline-block' : 'none';
                     });
                     empty.style.display = (favs.length === 0) ? 'block' : 'none';
@@ -145,7 +180,7 @@
                     document.getElementById('viewBtn').innerText = "Return Home";
                     document.getElementById('viewBtn').setAttribute('onclick', "switchPage('home')");
                 } else if (mode === 'home') {
-                    document.querySelectorAll('.game-card').forEach(card => card.style.display = 'inline-block');
+                    document.querySelectorAll('.game-card:not(#fnae-secret-card)').forEach(card => card.style.display = 'inline-block');
                     empty.style.display = 'none';
                     document.getElementById('pageTitle').innerText = "The Henny Vault";
                     document.getElementById('viewBtn').innerText = "View Favorites";
@@ -168,10 +203,9 @@
 
         function filterGames() {
             let input = document.getElementById('gameSearch').value.toLowerCase();
-            let cards = document.querySelectorAll('.game-card');
+            let cards = document.querySelectorAll('.game-card:not(#fnae-secret-card)');
             let count = 0;
             let noRes = document.getElementById('noResultsMsg');
-            
             cards.forEach(card => {
                 let title = card.querySelector('h2').innerText.toLowerCase();
                 if (title.startsWith(input)) {
@@ -186,7 +220,7 @@
 
         function handleSurprise() {
             applyAnimation(() => {
-                let cards = document.querySelectorAll('.game-card');
+                let cards = document.querySelectorAll('.game-card:not(#fnae-secret-card)');
                 let randomCard = cards[Math.floor(Math.random() * cards.length)];
                 let grid = document.getElementById('gameGrid');
                 grid.innerHTML = "";
@@ -197,25 +231,6 @@
                 btn.setAttribute("onclick", "location.reload()");
             });
         }
-
-        // Easter Egg Logic
-        let keyBuffer = "";
-        const secretCode = "hennyman";
-
-        document.addEventListener("keydown", (event) => {
-            if (document.activeElement.id === "gameSearch") return;
-            if (event.key.length === 1 && /[a-zA-Z]/.test(event.key)) {
-                keyBuffer += event.key.toLowerCase();
-                if (keyBuffer.length > secretCode.length) keyBuffer = keyBuffer.slice(-secretCode.length);
-                if (keyBuffer === secretCode) {
-                    applyAnimation(() => {
-                        window.location.href = "secret.html";
-                    });
-                }
-            } else {
-                keyBuffer = "";
-            }
-        });
 
         window.onload = () => {
             let favs = JSON.parse(localStorage.getItem('favs') || '[]');

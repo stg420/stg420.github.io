@@ -5,50 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Henny Vault</title>
     <style>
-        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; text-align: center; padding: 50px 20px; margin: 0; }
         h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 10px; }
-        .subtitle { font-size: 1.5rem; color: #94a3b8; margin-bottom: 20px; }
+        .subtitle { font-size: 1.5rem; color: #94a3b8; margin-bottom: 40px; }
         
-        #searchContainer { margin-bottom: 40px; display: flex; justify-content: center; align-items: center; gap: 15px; }
-        .control-btn { padding: 12px 20px; border-radius: 25px; border: none; background-color: #38bdf8; color: #0f172a; font-weight: bold; cursor: pointer; transition: transform 0.2s; width: 140px; text-align: center; }
-        .control-btn:hover { transform: scale(1.05); }
+        /* Search and Surprise Container */
+        #searchContainer { margin-bottom: 30px; display: flex; justify-content: center; gap: 10px; }
+        .control-btn { padding: 10px 20px; border-radius: 5px; border: none; background-color: #38bdf8; color: #0f172a; font-weight: bold; cursor: pointer; }
+        .control-btn:hover { background-color: #7dd3fc; }
+        #gameSearch { padding: 10px 20px; border-radius: 5px; border: 1px solid #334155; background-color: #1e293b; color: white; width: 300px; }
 
-        #gameSearch { padding: 12px 20px; border-radius: 25px; border: 1px solid #334155; background-color: #1e293b; color: white; width: 300px; font-size: 1rem; outline: none; }
-        
-        #mainContainer { transition: opacity 0.4s ease; min-height: 400px; }
+        /* Main Container for Transitions */
+        #mainContainer { transition: opacity 0.3s ease; }
         .game-grid { display: flex; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin: 0 auto; }
         
-        .game-card { background-color: #1e293b; padding: 16px; border-radius: 10px; display: inline-block; width: 240px; margin: 12px; border: 1px solid #334155; transition: transform 0.3s, opacity 0.4s; position: relative; }
+        .game-card { background-color: #1e293b; padding: 16px; border-radius: 10px; display: inline-block; width: 240px; margin: 12px; border: 1px solid #334155; transition: transform 0.2s; vertical-align: top; text-align: center; position: relative; }
         .game-card:hover { transform: scale(1.05); border-color: #38bdf8; }
-        .game-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 12px; }
+        .game-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 12px; background-color: #334155; }
+        h2 { font-size: 1.1rem; margin-bottom: 4px; }
         
-        .play-btn { background-color: #38bdf8; color: #0f172a; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 8px; }
-        .star-icon { position: absolute; bottom: 12px; right: 12px; cursor: pointer; color: #475569; font-size: 32px; }
+        .game-meta { font-size: 0.75rem; color: #94a3b8; display: block; margin-top: 2px; }
+        .recent-tag { font-size: 0.75rem; color: #38bdf8; font-weight: bold; display: block; margin-top: 4px; margin-bottom: 8px; }
+        
+        .play-btn { background-color: #38bdf8; color: #0f172a; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 8px; transition: transform 0.2s; }
+        .play-btn:hover { background-color: #7dd3fc; transform: scale(1.05); }
+        
+        .star-icon { position: absolute; bottom: 12px; right: 12px; cursor: pointer; color: #475569; font-size: 32px; transition: all 0.2s; }
+        .star-icon:hover { color: #94a3b8; }
         .star-icon.active { color: #fbbf24; }
 
-        #changelog { max-width: 800px; margin: 0 auto; text-align: left; background: #1e293b; padding: 30px; border-radius: 10px; display: none; height: 400px; overflow-y: auto; }
-        #changelog li { margin-bottom: 15px; }
-        #noResults, #emptyMsg { display: none; font-size: 1.5rem; color: #64748b; margin-top: 50px; }
+        /* Changelog Section */
+        #changelog { max-width: 900px; margin: 0 auto; text-align: left; background: #1e293b; padding: 30px; border-radius: 10px; display: none; height: 500px; overflow-y: auto; }
+        #changelog ul { list-style: none; padding: 0; }
+        #changelog li { margin-bottom: 20px; border-bottom: 1px solid #334155; padding-bottom: 15px; font-size: 1.1rem; }
+        
+        #emptyMsg { display: none; font-size: 1.5rem; color: #64748b; margin-top: 50px; }
     </style>
 </head>
 <body>
 
     <h1 id="pageTitle">The Henny Vault</h1>
-    <p class="subtitle" id="subInfo">
-        <span id="navLinks">
-            <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
-            <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
-        </span>
+    <p class="subtitle" id="subInfo">20 Games Available | 
+        <span id="viewBtn" style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('favorites')">View Favorites</span> | 
+        <span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="switchPage('changelog')">Changelog</span>
     </p>
 
+    <!-- Search and Surprise -->
     <div id="searchContainer">
-        <button id="surpriseBtn" class="control-btn" onclick="handleSurprise()">Surprise Me</button>
         <input type="text" id="gameSearch" placeholder="Search for a game..." onkeyup="filterGames()">
+        <button class="control-btn" id="surpriseBtn" onclick="handleSurprise()">Surprise Me</button>
     </div>
 
     <div id="mainContainer">
         <div id="gameGrid" class="game-grid">
-            <!-- (All your original game cards remain here) -->
             <div class="game-card" data-id="kg1"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/589590/header.jpg" alt="Kindergarten 1"><h2>Kindergarten 1</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten1/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg1')">★</span></div>
             <div class="game-card" data-id="kg2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1067850/header.jpg" alt="Kindergarten 2"><h2>Kindergarten 2</h2><span class="game-meta">Category: Puzzle, Indie</span><a href="https://stg420.github.io/kindergarten2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg2')">★</span></div>
             <div class="game-card" data-id="kg3"><img src="https://static.wikia.nocookie.net/kindergarten/images/3/31/Capsule_616x353.jpg" alt="Kindergarten 3"><h2>Kindergarten 3</h2><span class="game-meta">Category: Puzzle</span><a href="https://stg420.github.io/kindergarten3/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'kg3')">★</span></div>
@@ -65,72 +74,143 @@
             <div class="game-card" data-id="portal"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Portal_standalonebox.jpg/250px-Portal_standalonebox.jpg" alt="Portal"><h2>Portal</h2><span class="game-meta">Category: Puzzle, Platformer</span><a href="https://yikes.pw/portal" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'portal')">★</span></div>
             <div class="game-card" data-id="plague"><img src="https://www.cubed3.com/wp-content/uploads/2025/02/plague-inc-evolved-pc-art-banner.jpg" alt="Plague Inc"><h2>Plague Inc</h2><span class="game-meta">Category: Strategy, Simulation</span><a href="https://stg420.github.io/plagueinc/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'plague')">★</span></div>
             <div class="game-card" data-id="mc188"><img src="https://cdn.freebiesupply.com/logos/large/2x/minecraft-1-logo-png-transparent.png" alt="Minecraft 1.8.8"><h2>Minecraft 1.8.8</h2><span class="game-meta">Category: Sandbox, Adventure</span><a href="https://stg420.github.io/mc/mc" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'mc188')">★</span></div>
-            <div class="game-card" data-id="pvz"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/PlantsvsZombiesCoverArt.jpg/250px-PlantsvsZombiesCoverArt.jpg" alt="Plants vs. Zombies"><h2>Plants vs. Zombies</h2><span class="game-meta">Category: Strategy, Tower Defense</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/pvz" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'pvz')">★</span></div>
-            <div class="game-card" data-id="granny"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGuwPm1hTrkGGet0chLURkB8HKxaOWiplxX0G0jbzDQkZRLChsJwHeQcze&s=10" alt="Granny"><h2>Granny</h2><span class="game-meta">Category: Horror, Escape</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/granny/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'granny')">★</span></div>
-            <div class="game-card" data-id="granny2"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1205040/header.jpg" alt="Granny 2"><h2>Granny 2</h2><span class="game-meta">Category: Horror, Escape</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/granny2/" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'granny2')">★</span></div>
-            <div class="game-card" data-id="jsab"><img src="https://upload.wikimedia.org/wikipedia/en/e/e3/Just_Shapes_%26_Beats.jpg" alt="Just Shapes And Beats"><h2>Just Shapes And Beats</h2><span class="game-meta">Category: Rhythm, Action</span><span class="recent-tag">Recently Added</span><a href="https://stg420.github.io/jsab" class="play-btn">Play</a><span class="star-icon" onclick="toggleFavorite(this, 'jsab')">★</span></div>
+            <div class="game-card" data-id="pvz">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/PlantsvsZombiesCoverArt.jpg/250px-PlantsvsZombiesCoverArt.jpg" alt="Plants vs. Zombies">
+                <h2>Plants vs. Zombies</h2>
+                <span class="game-meta">Category: Strategy, Tower Defense</span>
+                <span class="recent-tag">Recently Added</span>
+                <a href="https://stg420.github.io/pvz" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'pvz')">★</span>
+            </div>
+            <div class="game-card" data-id="granny">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGuwPm1hTrkGGet0chLURkB8HKxaOWiplxX0G0jbzDQkZRLChsJwHeQcze&s=10" alt="Granny">
+                <h2>Granny</h2>
+                <span class="game-meta">Category: Horror, Escape</span>
+                <span class="recent-tag">Recently Added</span>
+                <a href="https://stg420.github.io/granny/" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'granny')">★</span>
+            </div>
+            <div class="game-card" data-id="granny2">
+                <img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1205040/header.jpg" alt="Granny 2">
+                <h2>Granny 2</h2>
+                <span class="game-meta">Category: Horror, Escape</span>
+                <span class="recent-tag">Recently Added</span>
+                <a href="https://stg420.github.io/granny2/" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'granny2')">★</span>
+            </div>
+            <div class="game-card" data-id="jsab">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e3/Just_Shapes_%26_Beats.jpg" alt="Just Shapes And Beats">
+                <h2>Just Shapes And Beats</h2>
+                <span class="game-meta">Category: Rhythm, Action</span>
+                <span class="recent-tag">Recently Added</span>
+                <a href="https://stg420.github.io/jsab" class="play-btn">Play</a>
+                <span class="star-icon" onclick="toggleFavorite(this, 'jsab')">★</span>
+            </div>
         </div>
+
         <div id="changelog">
-            <h2>Changelog</h2>
-            <ul><li>2026-07-19: Fixed navigation, added smooth animations, and restored full favorite/changelog functionality.</li></ul>
+            <h2>Site Changelog</h2>
+            <ul>
+                <li><strong>Site Feature:</strong> Added Search Bar And Surprise Me Button.</li>
+                <li><strong>Game Addition:</strong> Added Just Shapes And Beats.</li>
+                <li><strong>Game Addition:</strong> Added Granny 2.</li>
+                <li><strong>Game Addition:</strong> Added Plants vs. Zombies.</li>
+                <li><strong>Game Addition:</strong> Added Granny.</li>
+                <li><strong>Game Addition:</strong> Added Minecraft 1.8.8.</li>
+                <li><strong>Game Addition:</strong> Added Plague Inc.</li>
+                <li><strong>Game Addition:</strong> Added half life and portal.</li>
+                <li><strong>Current Update:</strong> Implemented unified page navigation and transition animations for all sections.</li>
+                <li><strong>Site Feature:</strong> Added "No Favorites" empty state messaging.</li>
+                <li><strong>Site Addition:</strong> Dedicated scrollable Changelog page implemented.</li>
+                <li><strong>Site Addition:</strong> Added Favorites system with star persistence.</li>
+                <li><strong>Site Addition:</strong> Added category tabs and "Recently Added" labels to game cards.</li>
+                <li><strong>Site Addition:</strong> Smooth animation transitions implemented for view switching.</li>
+                <li><strong>Game Additions:</strong> Added Baldis Basics Plus, TABS, GTA 3, Schoolboy Runaway, Hotline Miami, Christmas Massacre, Untitled Goose Game, and Dumb Ways To Die.</li>
+                <li><strong>Site Addition:</strong> Added Animations When Hovering Over Game Card or Play Button.</li>
+                <li><strong>Game Additions:</strong> Initial release containing Kindergarten 1, 2, 3, and Bendy And The Ink Machine.</li>
+                <li><strong>Launch:</strong> Website first created.</li>
+            </ul>
+            <button class="play-btn" onclick="switchPage('home')">Back to Games</button>
         </div>
-        <div id="noResults">No games match your search criteria.</div>
-        <div id="emptyMsg">No favorites selected. Click the star to favorite a game!</div>
+
+        <div id="emptyMsg">No Games Favorited, Click The Star To Favorite Games</div>
     </div>
 
     <script>
-        let isSurpriseMode = false;
-        const grid = document.getElementById('gameGrid');
-        const changelog = document.getElementById('changelog');
-        const emptyMsg = document.getElementById('emptyMsg');
+        function switchPage(mode) {
+            let container = document.getElementById('mainContainer');
+            container.style.opacity = 0;
 
-        function updateStarIcons() {
-            let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-            document.querySelectorAll('.star-icon').forEach(icon => {
-                let id = icon.parentElement.getAttribute('data-id');
-                icon.className = favs.includes(id) ? 'star-icon active' : 'star-icon';
-            });
-        }
-
-        function handleSurprise() {
-            if (isSurpriseMode) { window.location.reload(); } 
-            else {
-                let cards = Array.from(document.querySelectorAll('.game-card'));
-                let randomCard = cards[Math.floor(Math.random() * cards.length)];
-                document.getElementById('mainContainer').style.opacity = 0;
-                setTimeout(() => {
-                    grid.innerHTML = ""; grid.appendChild(randomCard);
-                    document.getElementById('surpriseBtn').innerText = "Return Home";
-                    isSurpriseMode = true;
-                    document.getElementById('mainContainer').style.opacity = 1;
-                }, 400);
-            }
-        }
-
-        function switchPage(page) {
-            document.getElementById('mainContainer').style.opacity = 0;
             setTimeout(() => {
-                grid.style.display = 'flex'; changelog.style.display = 'none'; emptyMsg.style.display = 'none';
-                if(page === 'favorites') {
-                    let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-                    if(favs.length === 0) { grid.style.display = 'none'; emptyMsg.style.display = 'block'; }
-                    else { document.querySelectorAll('.game-card').forEach(c => c.style.display = favs.includes(c.dataset.id) ? 'inline-block' : 'none'); }
-                } else if(page === 'changelog') {
-                    grid.style.display = 'none'; changelog.style.display = 'block';
-                    document.getElementById('navLinks').innerHTML = `<span style="color: #38bdf8; cursor: pointer; text-decoration: underline;" onclick="window.location.reload()">Return Home</span>`;
+                let grid = document.getElementById('gameGrid');
+                let log = document.getElementById('changelog');
+                let empty = document.getElementById('emptyMsg');
+                let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+                
+                grid.style.display = (mode === 'changelog') ? 'none' : 'flex';
+                log.style.display = (mode === 'changelog') ? 'block' : 'none';
+                
+                if (mode === 'favorites') {
+                    document.querySelectorAll('.game-card').forEach(card => {
+                        card.style.display = favs.includes(card.getAttribute('data-id')) ? 'inline-block' : 'none';
+                    });
+                    empty.style.display = (favs.length === 0) ? 'block' : 'none';
+                    document.getElementById('pageTitle').innerText = "Favorite Games";
+                    document.getElementById('viewBtn').innerText = "Return Home";
+                    document.getElementById('viewBtn').setAttribute('onclick', "switchPage('home')");
+                } else if (mode === 'home') {
+                    document.querySelectorAll('.game-card').forEach(card => card.style.display = 'inline-block');
+                    empty.style.display = 'none';
+                    document.getElementById('pageTitle').innerText = "The Henny Vault";
+                    document.getElementById('viewBtn').innerText = "View Favorites";
+                    document.getElementById('viewBtn').setAttribute('onclick', "switchPage('favorites')");
+                } else {
+                    empty.style.display = 'none';
+                    document.getElementById('pageTitle').innerText = "Site Changelog";
+                    document.getElementById('viewBtn').innerText = "View Games";
+                    document.getElementById('viewBtn').setAttribute('onclick', "switchPage('home')");
                 }
-                document.getElementById('mainContainer').style.opacity = 1;
-            }, 400);
+                
+                container.style.opacity = 1;
+            }, 300);
         }
 
         function toggleFavorite(el, id) {
             let favs = JSON.parse(localStorage.getItem('favs') || '[]');
-            if (favs.includes(id)) { favs = favs.filter(i => i !== id); } else { favs.push(id); }
+            if (favs.includes(id)) { favs = favs.filter(item => item !== id); el.classList.remove('active'); } 
+            else { favs.push(id); el.classList.add('active'); }
             localStorage.setItem('favs', JSON.stringify(favs));
-            updateStarIcons();
         }
 
-        updateStarIcons();
+        function filterGames() {
+            let input = document.getElementById('gameSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                let title = card.querySelector('h2').innerText.toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = 'inline-block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function handleSurprise() {
+            let cards = document.querySelectorAll('.game-card');
+            let randomCard = cards[Math.floor(Math.random() * cards.length)];
+            let grid = document.getElementById('gameGrid');
+            grid.innerHTML = "";
+            grid.appendChild(randomCard);
+            document.getElementById('surpriseBtn').innerText = "Reload Page";
+            document.getElementById('surpriseBtn').setAttribute("onclick", "location.reload()");
+        }
+
+        window.onload = () => {
+            let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+            document.querySelectorAll('.star-icon').forEach(star => {
+                if (favs.includes(star.parentElement.getAttribute('data-id'))) star.classList.add('active');
+            });
+        };
     </script>
 </body>
 </html>

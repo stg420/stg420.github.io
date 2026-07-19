@@ -198,6 +198,25 @@
             });
         }
 
+        // Easter Egg Logic
+        let keyBuffer = "";
+        const secretCode = "hennyman";
+
+        document.addEventListener("keydown", (event) => {
+            if (document.activeElement.id === "gameSearch") return;
+            if (event.key.length === 1 && /[a-zA-Z]/.test(event.key)) {
+                keyBuffer += event.key.toLowerCase();
+                if (keyBuffer.length > secretCode.length) keyBuffer = keyBuffer.slice(-secretCode.length);
+                if (keyBuffer === secretCode) {
+                    applyAnimation(() => {
+                        window.location.href = "secret.html";
+                    });
+                }
+            } else {
+                keyBuffer = "";
+            }
+        });
+
         window.onload = () => {
             let favs = JSON.parse(localStorage.getItem('favs') || '[]');
             document.querySelectorAll('.star-icon').forEach(star => {
@@ -207,4 +226,3 @@
     </script>
 </body>
 </html>
-
